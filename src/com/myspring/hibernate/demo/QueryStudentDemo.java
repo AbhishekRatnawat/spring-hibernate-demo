@@ -35,9 +35,15 @@ public class QueryStudentDemo {
 			displayStudents(theStudents);
 			
 			//query students: lastName = 'Doe'
-			theStudents = session.createQuery("from Student s where s.lastName='Doe'").getResultList();
+			theStudents = session.createQuery("from Student s where s.lastName='Doe'").getResultList(); //lastName is our class variable not table attribute
 			
 			//display students
+			displayStudents(theStudents); //converted into function by  going into source --> extractFunction
+			
+			
+			//query students: lastName='Doe' or firstname= "Duck"
+			theStudents = session.createQuery("from Student s where s.lastName='Doe' OR s.firstName='Donald'").getResultList();
+			System.out.println("OR clause output");
 			displayStudents(theStudents);
 			
 			//commit trnx
